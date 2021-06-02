@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GroupProject.Models;
 
 namespace AuthDemo.Data
 {
@@ -32,6 +33,7 @@ namespace AuthDemo.Data
         public DbSet<PO> POs { get; set; }
         public DbSet<AsComponent> AsComponents { get; set; }
         public object AsCompoments { get; internal set; }
+        public DbSet<GroupProject.Models.Feedback> Feedback { get; set; }
        
     }
 

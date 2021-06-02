@@ -23,8 +23,21 @@ namespace AuthDemo.Controllers
 
         // GET: api/Modules
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Module>>> GetModules()
+        public async Task<ActionResult<IEnumerable<Module>>> GetModules(string value, string field)
         {
+            if(field == "state")
+            {
+                return await _context.Modules.Where(s=>s.State == value).ToListAsync();
+            }
+            else if (field == "type")
+            {
+                return await _context.Modules.Where(s => s.type == value).ToListAsync();
+            }
+
+            else if (field == "type2")
+            {
+                return await _context.Modules.Where(s => s.type != value).ToListAsync();
+            }
             return await _context.Modules.ToListAsync();
         }
 
