@@ -23,6 +23,7 @@ namespace AuthDemo.Controllers
         }
 
         // GET: api/Feedbacks
+        //[Authorize(Roles = "Lecturer")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Feedback>>> Getfeedbacks()
         {
@@ -42,6 +43,14 @@ namespace AuthDemo.Controllers
 
             return feedback;
         }
+       // [Authorize(Roles = "Lecturer")]
+        [HttpGet("feedbackFilter")]
+        public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbackFilter(String ModuleIdParameter)
+        {
+            return await _context.feedbacks.Where(s => s.ModuleId == ModuleIdParameter).ToListAsync();
+        }
+
+
 
         // PUT: api/Feedbacks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -76,6 +85,7 @@ namespace AuthDemo.Controllers
 
         // POST: api/Feedbacks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Feedback>> PostFeedback(Feedback feedback)
         {
