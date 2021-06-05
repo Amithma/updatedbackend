@@ -33,7 +33,7 @@ namespace AuthDemo.Controllers
             _jwtSettings = configuration.GetSection("JwtSettings");
         }
 
-        [Authorize(Roles = "Lecturer")]
+        //[Authorize(Roles = "Lecturer")]
         [HttpGet("Test")]
         public String Test()
         {

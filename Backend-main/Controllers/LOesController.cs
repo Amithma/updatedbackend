@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AuthDemo.Data;
 using AuthDemo.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace AuthDemo.Controllers
 {
@@ -86,6 +87,36 @@ namespace AuthDemo.Controllers
 
             return CreatedAtAction("GetLO", new { id = lO.ID }, lO);
         }
+
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<LO> patchLO)
+        {
+            if (patchLO == null)
+            {
+                return BadRequest();
+            }
+
+            var lo = await _context.LOs.FirstOrDefaultAsync(x => x.ID == id);
+
+            if (lo == null)
+            {
+                return NotFound();
+            }
+
+            patchLO.ApplyTo(lo, ModelState);
+
+            var isValid = TryValidateModel(lo);
+
+            if (!isValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
 
         // DELETE: api/LOes/5
         [HttpDelete("{id}")]

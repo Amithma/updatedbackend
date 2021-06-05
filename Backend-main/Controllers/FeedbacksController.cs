@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AuthDemo.Data;
 using GroupProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AuthDemo.Controllers
 {
@@ -22,11 +23,11 @@ namespace AuthDemo.Controllers
         }
 
         // GET: api/Feedbacks
+        //[Authorize(Roles = "Lecturer")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedback(string id)
+        public async Task<ActionResult<IEnumerable<Feedback>>> Getfeedbacks()
         {
-
-            return await _context.Feedback.Where(s => s.ModuleId == id).ToListAsync();
+            return await _context.Feedback.ToListAsync();
         }
 
         // GET: api/Feedbacks/5
@@ -35,7 +36,6 @@ namespace AuthDemo.Controllers
         {
             var feedback = await _context.Feedback.FindAsync(id);
 
-
             if (feedback == null)
             {
                 return NotFound();
@@ -43,6 +43,14 @@ namespace AuthDemo.Controllers
 
             return feedback;
         }
+        // [Authorize(Roles = "Lecturer")]
+        [HttpGet("feedbackFilter")]
+        public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbackFilter(String ModuleIdParameter)
+        {
+            return await _context.Feedback.Where(s => s.ModuleId == ModuleIdParameter).ToListAsync();
+        }
+
+
 
         // PUT: api/Feedbacks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -77,6 +85,7 @@ namespace AuthDemo.Controllers
 
         // POST: api/Feedbacks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+       
         [HttpPost]
         public async Task<ActionResult<Feedback>> PostFeedback(Feedback feedback)
         {
