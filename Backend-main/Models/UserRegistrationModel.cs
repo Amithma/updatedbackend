@@ -8,6 +8,7 @@ namespace AuthDemo.Models
 {
     public class UserRegistrationModel
     {
+        public string RegNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required(ErrorMessage = "Email is required")]

@@ -13,10 +13,9 @@ namespace AuthDemo.Models
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AsID { get; set; }
+        [Required]
         public string Ascomponent { get; set; }
-
-        // [ForeignKey("LOID")]
-        //public int? Lid { get; set; } 
+        [Required]
         public string LOID { get; set; }
 
         [ForeignKey("POID")]

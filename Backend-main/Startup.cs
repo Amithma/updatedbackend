@@ -72,7 +72,10 @@ namespace AuthDemo
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:3000");
+                                      builder.WithOrigins("http://localhost:3000", "https://obecpt.vercel.app")
+                                                                            .AllowAnyHeader()
+                                                                            .AllowAnyMethod();
+
                                   });
             });
             // Auto Mapper Configurations

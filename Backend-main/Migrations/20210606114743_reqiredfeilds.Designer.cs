@@ -4,14 +4,16 @@ using AuthDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthDemo.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20210606114743_reqiredfeilds")]
+    partial class reqiredfeilds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,22 +360,22 @@ namespace AuthDemo.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a517dcc-7c4e-4940-baf5-619d6727b279",
-                            ConcurrencyStamp = "ec3e6928-183f-4f22-894f-2aecccb4c0b3",
+                            Id = "bf97894d-1370-4259-aaa3-ecbc33c6f1c7",
+                            ConcurrencyStamp = "78fcdcc1-d7ab-406d-8433-b52da3af4061",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "175c732b-204a-4583-860d-44e80c84dd73",
-                            ConcurrencyStamp = "894e5526-ab08-4b56-91f0-996b2908769c",
+                            Id = "8b69d8ed-4b02-4736-b476-7496fb086170",
+                            ConcurrencyStamp = "08abdf93-1cd3-44b8-9ff0-67f3f11dcfa2",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "51eecfae-8048-4971-acf4-5c4b96e75771",
-                            ConcurrencyStamp = "1587115c-1d39-47c8-b2bc-dbefb7916e42",
+                            Id = "1b6a97e4-fc74-4e50-bfd3-8dde7b87fc95",
+                            ConcurrencyStamp = "1df29533-cc59-4d39-b370-e54fda011fbe",
                             Name = "Lecturer",
                             NormalizedName = "LECTURER"
                         });

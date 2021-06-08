@@ -5,6 +5,12 @@
       "type": "mssql.azure",
       "connectionId": "OBERuhunaNew",
       "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/oberuhunadbdbserver/databases/OBERuhunaDB",
+      "type": "mssql.azure",
+      "connectionId": "OBERuhunaNew",
+      "secretStore": "AzureAppSettings"
     }
   }
 }
